@@ -1,0 +1,24 @@
+{
+  "name": "obsidian",
+  "version": "1.0.0",
+  "main": "upload_clipping.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niaru1192/Obsidian.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/niaru1192/Obsidian/issues"
+  },
+  "homepage": "https://github.com/niaru1192/Obsidian#readme",
+  "description": "",
+  "dependencies": {
+    "rss-parser": "^3.13.0",
+    "turndown": "^7.2.0"
+  }
+}
