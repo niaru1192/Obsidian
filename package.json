@@ -1,5 +1,5 @@
 {
-  "name": "obsidian",
+  "name": "Obsidian",
   "version": "1.0.0",
   "main": "fetch_rss.js",
   "scripts": {
