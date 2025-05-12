@@ -1,7 +1,7 @@
 {
   "name": "obsidian",
   "version": "1.0.0",
-  "main": "upload_clipping.js",
+  "main": "fetch_rss.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,7 +19,9 @@
   "description": "",
   "type": "module",
   "dependencies": {
-    "rss-parser": "^3.13.0",
-    "turndown": "^7.2.0"
+    "rss-parser": "^3.12.0",
+    "turndown": "^7.1.1",
+    "node-fetch": "^2.6.7",
+    "dropbox": "^10.31.0"
   }
 }
