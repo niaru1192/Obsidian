@@ -1,6 +1,9 @@
 # 1  ── ワークフローの見出し（Actions タブに表示される名称）
 name: Auto Fetch RSS
 
+permissions:
+  contents: write
+
 # 4  ── 実行トリガーの定義
 on:
   schedule:
