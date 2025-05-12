@@ -29,8 +29,8 @@ jobs:
       - name: Fetch RSS & generate MD + Dropbox Upload
         run: node fetch_rss.js
         env:
-          RSS_URL:        ${{ secrets.RSS_URL }}
-          DROPBOX_TOKEN:  ${{ secrets.DROPBOX_TOKEN }}
+          RSS_URL:       ${{ secrets.RSS_URL }}
+          DROPBOX_TOKEN: ${{ secrets.DROPBOX_TOKEN }}
 
       - name: Commit & Push changes
         run: |
