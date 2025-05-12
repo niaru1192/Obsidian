@@ -1,14 +1,12 @@
 name: Auto Fetch RSS
 
-# grant the built-in GITHUB_TOKEN write access so it can push back to the repo
 permissions:
   contents: write
 
-# cron schedule + manual trigger
 on:
   schedule:
     - cron: '0 3 * * *'       # 毎日 UTC 3:00（日本時間12:00）に実行
-  workflow_dispatch:          # Actions タブから手動トリガー可
+  workflow_dispatch:          # 手動トリガー可
 
 jobs:
   build:
@@ -38,7 +36,7 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add _posts/
-          git diff --cached --quiet || git commit -m "chore: update RSS posts" 
+          git diff --cached --quiet || git commit -m "chore: update RSS posts"
           git push
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
