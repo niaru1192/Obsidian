@@ -1,0 +1,14 @@
+{
+  "feeds": [
+    "https://feeds.feedburner.com/CoinDesk",
+    "https://cointelegraph.com/rss",
+    "https://cryptoslate.com/feed/",
+    "https://decrypt.co/feed",
+    "https://www.newsbtc.com/feed/",
+    "https://bitcoinmagazine.com/.rss/full/",
+    "https://www.reuters.com/technology/cryptocurrency.rss",
+    "https://coinpost.jp/feed",
+    "https://cryptotimes.jp/feed/",
+    "https://jp.cointelegraph.com/rss"
+  ]
+}
