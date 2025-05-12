@@ -1,46 +1,47 @@
-// fetch_rss.js
-import Parser from 'rss-parser';
-import TurndownService from 'turndown';
-import fs from 'fs';
-import path from 'path';
+# 1  ── ワークフローの見出し（Actions タブに表示される名称）
+name: Auto Fetch RSS
 
-(async () => {
-  // 1) 環境変数から URL を読む
-  const rssUrl = process.env.RSS_URL;
-  if (!rssUrl) {
-    console.error('Error: 環境変数 RSS_URL が設定されていません');
-    process.exit(1);
-  }
+# 4  ── 実行トリガーの定義
+on:
+  schedule:
+    - cron: '0 3 * * *'       # 毎日 UTC 3:00 実行（日本時間 12:00）
+  workflow_dispatch:          # 手動実行ボタンも有効化
 
-  // 2) フィード取得
-  const parser = new Parser();
-  const feed   = await parser.parseURL(rssUrl);
+jobs:
+  build:
+    # 11 ── 実行環境
+    runs-on: ubuntu-latest
 
-  // 3) 出力フォルダ準備
-  const outDir = path.resolve(__dirname, '_posts');
-  if (!fs.existsSync(outDir)) fs.mkdirSync(outDir);
+    steps:
+      # 15 ── リポジトリをチェックアウト（コードを取得）
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: true   # GITHUB_TOKEN を次ステップで使えるように保持
 
-  // 4) 各アイテムを Markdown 化して保存
-  const td = new TurndownService();
-  for (const item of feed.items) {
-    const date = new Date(item.pubDate || item.isoDate).toISOString().slice(0,10);
-    const slug = item.title
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g,'-')
-      .replace(/(^\-|\-$)/g,'');
-    const filename = `${date}-${slug}.md`;
-    const filepath = path.join(outDir, filename);
-    if (fs.existsSync(filepath)) continue;
+      # 20 ── Node.js をセットアップ
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
 
-    const fm = [
-      '---',
-      `title: "${item.title.replace(/"/g,'\\"')}"`,
-      `date:  ${date}`,
-      `link:  "${item.link}"`,
-      '---\n',
-    ].join('\n');
-    const body = td.turndown(item.content || item.contentSnippet || '');
-    fs.writeFileSync(filepath, fm + body);
-    console.log(`Created: ${filename}`);
-  }
-})();
+      # 25 ── 依存パッケージのインストール
+      - name: Install dependencies
+        run: npm ci
+
+      # 30 ── RSS 取得＆Markdown 生成
+      - name: Fetch RSS & generate MD
+        run: node fetch_rss.js
+        env:
+          RSS_URL: ${{ secrets.RSS_URL }}    # リポジトリシークレットに登録済みの RSS フィード URL
+
+      # 36 ── 変更をコミット＆プッシュ
+      - name: Commit & Push changes
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add _posts/
+          git diff --quiet || git commit -m "chore: update RSS posts"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # 自動提供されるトークン
