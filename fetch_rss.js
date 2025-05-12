@@ -3,6 +3,9 @@ import Parser from 'rss-parser';
 import TurndownService from 'turndown';
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname  = path.dirname(__filename);
 
 (async () => {
   // 1) 環境変数から URL を読む
