@@ -26,10 +26,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Fetch RSS & generate MD
+      - name: Fetch RSS & generate MD + Dropbox Upload
         run: node fetch_rss.js
         env:
-          RSS_URL: ${{ secrets.RSS_URL }}
+          RSS_URL:        ${{ secrets.RSS_URL }}
+          DROPBOX_TOKEN:  ${{ secrets.DROPBOX_TOKEN }}
 
       - name: Commit & Push changes
         run: |
