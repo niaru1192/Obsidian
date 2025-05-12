@@ -4,8 +4,8 @@
    import { Dropbox } from 'dropbox';
    import fs from 'fs';
 
-   const RSS_URL = 'https://example.com/rss';
-   const ACCESS_TOKEN = 'YOUR_DROPBOX_TOKEN';
+   const RSS_URL = process.env.RSS_URL;
+   const ACCESS_TOKEN = process.env.DROPBOX_TOKEN;
    const dbx = new Dropbox({ accessToken: ACCESS_TOKEN, fetch });
 
    (async () => {
