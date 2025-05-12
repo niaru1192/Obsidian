@@ -1,0 +1,43 @@
+以下は、仮想通貨の市場動向や今後の値動きを追うのに信頼性の高い RSS フィードの例です。英語圏・日本語圏からそれぞれピックアップしてみましたので、興味のあるものを Vault の “Clipping” や “posts” に登録してみてください。
+―――――
+■ 英語圏メディア
+CoinDesk
+　– 世界的に最も著名な仮想通貨情報サイト
+　https://feeds.feedburner.com/CoinDesk
+Cointelegraph
+　– ブロックチェーン／暗号資産専門の老舗メディア
+　https://cointelegraph.com/rss
+CryptoSlate
+　– マーケットデータと相場分析が豊富
+　https://cryptoslate.com/feed/
+Decrypt
+　– 技術深掘り記事や専門家インタビューが充実
+　https://decrypt.co/feed
+NewsBTC
+　– 値動き分析・テクニカル解説も多い
+　https://www.newsbtc.com/feed/
+Bitcoin Magazine
+　– ビットコインにフォーカスした解説・予測記事
+　https://bitcoinmagazine.com/.rss/full/
+Reuters（Crypto News）
+　– Reuters の暗号資産カテゴリ（信頼度◎）
+　https://www.reuters.com/technology/cryptocurrency.rss
+―――――
+■ 日本語メディア
+CoinPost
+　– 国内最大級の仮想通貨ニュース／相場分析
+　https://coinpost.jp/feed
+CryptoTimes
+　– 速報＋マーケットサマリーが見やすい
+　https://cryptotimes.jp/feed/
+Cointelegraph Japan
+　– Cointelegraph の日本語版、海外情報も追える
+　https://jp.cointelegraph.com/rss
+―――――
+これらのフィードを組み合わせれば、
+• ニュース速報
+• テクニカル分析
+• 技術系深堀り記事
+• 国内外の相場比較
+など多角的にキャッチアップできます。
+GitHub Actions＋Obsidian 連携の自動収集スクリプトに RSS_URL として登録して、毎日自動で最新情報を集めてみてください。
